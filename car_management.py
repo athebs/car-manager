@@ -89,7 +89,15 @@ class CarManager:
         new_mileage = input('What is your car milage', )
         self._mileage = new_mileage
         
-        
+def display_welcome():
+    print("""----  WELCOME  ----
+1. Add a car
+2. View all cars
+3. View total number of cars
+4. See a car's details
+5. Service a car
+6. Update mileage
+7. Quit""")        
 
 
 
@@ -105,17 +113,18 @@ def add_car():
 
 #view how many cars are there 
 def view_cars():
+    print(CarManager.all_cars)
+#view total number of cars 
+def view_total_cars():
+    print(f"Total cars present: {CarManager.total_cars}")
     
-    print (CarManager.all_cars)
-#logic tree to figure out what you want to do 
 
     
 #logic tree to figure out what you want to do 
 def choice_welcome():
-    print(welcome_choices)
-    
     done = False
     while not done:
+        display_welcome()
         user_choice =input("What do you need to do? Enter a number between 1-7: ", )      
         if user_choice == "1":
             add_car()
@@ -123,7 +132,7 @@ def choice_welcome():
         elif user_choice == "2":
             view_cars()
         elif user_choice == "3":
-            print("view all cars")
+            view_total_cars()
         elif user_choice == "4":
             print("see a car")
         elif user_choice == "5":
