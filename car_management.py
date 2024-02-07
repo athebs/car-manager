@@ -49,9 +49,7 @@ class CarManager:
         self._make = new_make 
     
     # take input from the user sets self.make to new make 
-    def input_make(self): 
-        new_make = input("What is your Make?", )
-        self.make = new_make
+
     # to add a model 
     @property 
     def model(self):
@@ -88,7 +86,12 @@ class CarManager:
     def input_mileage(self):
         new_mileage = input('What is your car milage', )
         self._mileage = new_mileage
-        
+
+class Input_user(CarManager):    
+    def input_make(self): 
+        new_make = input("What is your Make?", )
+        self.make = new_make
+
         
 
 
@@ -105,9 +108,11 @@ def add_car():
 
 #view how many cars are there 
 def view_cars():
-    
     print (CarManager.all_cars)
-#logic tree to figure out what you want to do 
+#view total number of cars 
+def view_total_number():
+    print(f"The total cars present: {CarManager.total_cars}")
+
 
     
 #logic tree to figure out what you want to do 
@@ -123,7 +128,7 @@ def choice_welcome():
         elif user_choice == "2":
             view_cars()
         elif user_choice == "3":
-            print("view all cars")
+            view_total_number()
         elif user_choice == "4":
             print("see a car")
         elif user_choice == "5":
