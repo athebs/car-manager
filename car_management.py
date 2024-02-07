@@ -1,6 +1,6 @@
 class CarManager:
     all_cars =[]
-    total_cars = int
+    total_cars = 0
     welcome_choices = {
     "1. Add a car": "1",
     "2. View all cars": "2",
@@ -12,7 +12,8 @@ class CarManager:
 
     
     def __init__(self, id, make, model, year, mileage, services) -> None:
-        self._id = id 
+        self._id = CarManager.total_cars + 1  
+        CarManager.totalcars+= 1 
         self._make = make 
         self._model = model
         self._year = year
@@ -26,13 +27,20 @@ class CarManager:
     
     def show_welcome_message(self, welcome_list):
         welcome_list = list(CarManager.welcome_choices.keys)
+        print(welcome_list)
         return welcome_list
     
+    # function that adds to the count of cars by 1 
+    def total_cars_incrementer(self):
+        CarManager.total_cars += 1
+        return CarManager.total_cars
 
-    # def welcome_page(choice): 
+
 
         
 
     
 athena_car = CarManager("4444", "honda", "civic", 2004, 5000, "oil change" )
-print(athena_car.show_welcome_message)
+print(CarManager.total_cars)
+athena_car.total_cars_incrementer()
+print(CarManager.total_cars)
