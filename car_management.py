@@ -81,7 +81,19 @@ class CarManager:
     def services_setter(self, updated_services): 
         self._services = update_services
         return updated_services
-    
+ 
+
+
+def add_car():
+    new_car = InteractiveCarManager()
+    new_car.make = InteractiveCarManager.input_make()
+    new_car.model = InteractiveCarManager.input_model()
+    new_car.year = InteractiveCarManager.input_year()
+    new_car.mileage = InteractiveCarManager.input_mileage()
+    return new_car
+
+# Other functions and code remain the same...
+
         
 def display_welcome():
     print("""----  WELCOME  ----
