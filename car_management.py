@@ -2,7 +2,7 @@
 class CarManager:
     all_cars =[]
     total_cars = 0
-    services_offered= ["1. Oil Change", "2. Brakes Pads Changed", "3. Tires Rotated"]
+    
    
     def __init__(self, make = None, model = None, year = None, mileage = None, services = []) -> None:
 
@@ -121,15 +121,16 @@ def car_finder():
 
 # Car services 
 def update_services():
+    services_offered = ["1. Oil Change", "2. Brakes Pads Changed", "3. Tires Rotated"]
     user_choice ="""What do you need done? Please Enter a Number Between 1-3 
           if user
-            {CarManager.services_offered}"""
+            {services_offered}"""
     if user_choice == "1":
-        CarManager
-    if user_choice == "2":
+        CarManager.services_setter.append(services_offered[0])
+    # if user_choice == "2":
         
-    if user_choice == "3":
-        view_total_cars()
+    # if user_choice == "3":
+    #     view_total_cars()
 
     
 
