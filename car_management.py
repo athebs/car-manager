@@ -1,19 +1,9 @@
-welcome_choices = [
-    "1. Add a car",
-    "2. View all cars",
-    "3. View total number of cars",
-    "4. See a car's details",
-    "5. Service a car",
-    "6. Update mileage",
-    "7. Quit"]
-
 
 class CarManager:
     all_cars =[]
     total_cars = 0
+    services_offered= ["1. Oil Change", "2. Brakes Pads Changed", "3. Tires Rotated"]
    
-
-     
     def __init__(self, make = None, model = None, year = None, mileage = None, services = []) -> None:
 
         # update total_cars and create ID for this care 
@@ -29,16 +19,12 @@ class CarManager:
     
     # string to see what is going on 
     def __str__(self):
-        return f"car id: {self._id}, model: {self._model}, make: {self._make}, year: {self._year}, mileage {self._mileage}, serives render:{self._services}"
+        return f"car id: {self._id}, model: {self._model}, make: {self._make}, year: {self._year}, mileage {self._mileage}"
    
     def __repr__(self):
         return str(self)
     
-    # @classmethod
-    def show_welcome_message(self):
-        welcome_list = list(CarManager.welcome_choices.keys())
-        return welcome_list
-    # to add information to a list 
+   
 
     @property
     def make(self): 
@@ -99,10 +85,6 @@ def display_welcome():
 6. Update mileage
 7. Quit""")        
 
-
-
-    
-
 #add make/model/year/milage by calling the input class methods 
 def add_car():
     new_car = CarManager()
@@ -117,6 +99,23 @@ def view_cars():
 #view total number of cars 
 def view_total_cars():
     print(f"Total cars present: {CarManager.total_cars}")
+
+# print the return statment as it has all the details about the car 
+def view_car_details():
+    print(f"Car ID: {self._id}, Model: {self._model}, Make: {self._make}, Year: {self._year}, Mileage {self._mileage}")
+
+# Car services 
+def update_services():
+    user_choice ="""What do you need done? Please Enter a Number Between 1-3 
+          if user
+            {CarManager.services_offered}"""
+    if user_choice == "1":
+
+    if user_choice == "2":
+        view_cars()
+    if user_choice == "3":
+        view_total_cars()
+
     
 
     
@@ -134,9 +133,9 @@ def choice_welcome():
         elif user_choice == "3":
             view_total_cars()
         elif user_choice == "4":
-            print("see a car")
+            view_car_details()
         elif user_choice == "5":
-            print("Service a Car") 
+            update_services()
         elif user_choice == "6":
             print("Upadate Milage") 
         elif user_choice == "7":
