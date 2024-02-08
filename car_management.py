@@ -12,8 +12,6 @@ class CarManager:
     all_cars =[]
     total_cars = 0
    
-
-     
     def __init__(self, make = None, model = None, year = None, mileage = None, services = []) -> None:
 
         # update total_cars and create ID for this care 
@@ -33,12 +31,7 @@ class CarManager:
    
     def __repr__(self):
         return str(self)
-    
-    # @classmethod
-    def show_welcome_message(self):
-        welcome_list = list(CarManager.welcome_choices.keys())
-        return welcome_list
-    # to add information to a list 
+
 
     @property
     def make(self): 
@@ -53,15 +46,12 @@ class CarManager:
     # to add a model 
     @property 
     def model(self):
-        return self._model 
+        return self._model
     
     @model.setter
     def model_setter(self, new_model):
         self._model = new_model
 
-    def input_model(self):
-        new_model = input('What is your Model?', )
-        self._model = new_model
     #to add a year 
     @property 
     def year(self):
@@ -71,9 +61,6 @@ class CarManager:
     def year_setter(self, new_year):
         self._year = new_year
 
-    def input_year(self):
-        new_year = input('What year is your car?', )
-        self._year = new_year
     # to add the milage 
     @property 
     def mileage(self):
@@ -83,16 +70,43 @@ class CarManager:
     def mileage_setter(self, new_mileage):
         self._mileage = new_mileage
 
-    def input_mileage(self):
-        new_mileage = input('What is your car milage', )
-        self._mileage = new_mileage
+   
 
-class Input_user(CarManager):    
-    def input_make(self): 
-        new_make = input("What is your Make?", )
-        self.make = new_make
+class InteractiveCarManager(CarManager):
+    @staticmethod
+    def input_make():
+        new_make = input("What is your Make? ")
 
-        
+    @staticmethod
+    def input_model():
+       new_model = input("What is your Model? ")
+
+    @staticmethod
+    def input_year():
+        new_year = input("What year is your car? ")
+
+    @staticmethod
+    def input_mileage():
+        new_mileage = input("What is your car mileage? ")
+
+    @staticmethod
+    def update_services(new_car):
+        services_offered = ["1. Oil Change", "2. Brakes Pads Changed", "3. Tires Rotated"]
+        user_choice = input(f"What do you need done? Please Enter a Number Between 1-{len(services_offered)}: ")
+        if user_choice.isdigit():
+            choice = int(user_choice)
+            if 1 <= choice <= len(services_offered):
+                new_car.services_setter.append(services_offered[choice-1])
+                print("Service added successfully!")
+            else:
+                print("Invalid choice.")
+        else:
+            print("Invalid input.")
+
+
+
+# Other functions and code remain the same...
+
 
 
 
@@ -100,11 +114,12 @@ class Input_user(CarManager):
 
 #add make/model/year/milage by calling the input class methods 
 def add_car():
-    new_car = CarManager()
-    new_car.input_make()
-    new_car.input_model()
-    new_car.input_year()
-    new_car.input_mileage()
+    new_car = InteractiveCarManager()
+    new_car.make = InteractiveCarManager.input_make()
+    new_car.model = InteractiveCarManager.input_model()
+    new_car.year = InteractiveCarManager.input_year()
+    new_car.mileage = InteractiveCarManager.input_mileage()
+    
 
 #view how many cars are there 
 def view_cars():
